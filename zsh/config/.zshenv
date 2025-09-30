@@ -2,7 +2,8 @@
 
 mkdir -p $HOME/dotfiles/zsh/{config,history,completions}
 
-export ZDOTDIR="$HOME/dotfiles/zsh/config"
-export ZSH="$HOME/dotfiles/zsh/.oh-my-zsh"
-export HISTFILE="$HOME/dotfiles/zsh/history/.zsh_history"
-export ZSH_COMPDUMP="$HOME/dotfiles/zsh/completions/.zcompdump"
+export DOTDIR="$HOME/dotfiles"
+export ZDOTDIR="$DOTDIR/zsh/config"
+export ZSH="$DOTDIR/zsh/.oh-my-zsh"
+export HISTFILE="$DOTDIR/zsh/history/.zsh_history"
+export ZSH_COMPDUMP="$DOTDIR/zsh/completions/.zcompdump"
