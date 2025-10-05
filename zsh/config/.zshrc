@@ -14,6 +14,9 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
+# annoying shit
+setopt rm_star_silent
+
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
@@ -48,6 +51,14 @@ function zfzf() {
   if [ -n "$dir" ]; then
     z "$dir"
   fi
+}
+
+function y() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  IFS= read -r -d '' cwd < "$tmp"
+  [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+  rm -f -- "$tmp"
 }
 
 . "$HOME/.local/bin/env"
