@@ -1,4 +1,4 @@
--- // configs
+-- // config
 require("config")
 
 -- // setting up lazy vim
@@ -29,4 +29,4 @@ require("lazy").setup({
 -- // keymaps
 require("keymaps")
 
-vim.cmd.colorscheme("rose-pine-moon")
+vim.cmd.colorscheme("kanagawa")
