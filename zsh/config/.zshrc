@@ -42,7 +42,6 @@ alias paste='wl-paste'
 alias tree='ls --tree'
 alias ls='eza --color=always --icons=always --group-directories-first --sort=extension'
 alias cd='z'
-alias open='xdg-open'
 
 
 function zfzf() {
@@ -61,4 +60,5 @@ function y() {
   rm -f -- "$tmp"
 }
 
-. "$HOME/.local/bin/env"
+
+. "$HOME/.cargo/env"

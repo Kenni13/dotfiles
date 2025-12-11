@@ -29,4 +29,4 @@ require("lazy").setup({
 -- // keymaps
 require("keymaps")
 
-vim.cmd.colorscheme("kanagawa")
+vim.cmd.colorscheme("catppuccin-frappe")

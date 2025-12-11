@@ -3,7 +3,7 @@ local LSPs = {
 	"lua_ls",
 	"clangd",
 	"pyright",
-	"jdtls",
+  "rust_analyzer",
 }
 
 -- so I can easily share it
