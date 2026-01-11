@@ -62,3 +62,17 @@ function y() {
 
 
 . "$HOME/.cargo/env"
+alias lua=lua5.1
+
+
+# windows related
+# GCC
+alias win_gcc='x86_64-w64-mingw32-gcc'
+alias win_g++='x86_64-w64-mingw32-g++'
+
+# Clang
+alias win_clang='x86_64-w64-mingw32-clang'
+alias win_clang++='x86_64-w64-mingw32-clang++'
+
+# user home
+export win_user='/mnt/c/Users/trsxh/'

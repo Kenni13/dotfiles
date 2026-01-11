@@ -1,7 +1,7 @@
 If:
-  PathMatch: .*\.(cpp|hpp)$
+  PathMatch: .*\.(cpp|cc|hpp)$
 CompileFlags:
-  Add: [-std=c++20, -xc++]
+  Add: [-std=c++23, -xc++]
 ---
 If:
   PathMatch: .*\.(c|h)$

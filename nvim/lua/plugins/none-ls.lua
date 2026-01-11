@@ -16,17 +16,18 @@ return {
       automatic_installation = false,
     })
 
+    local formatting = null_ls.builtins.formatting;
     null_ls.setup({
       sources = {
         -- // lua
-        null_ls.builtins.formatting.stylua,
+        formatting.stylua,
 
         -- // python
-        null_ls.builtins.formatting.black, -- // for formatting
-        null_ls.builtins.formatting.isort, -- // for imports. i(mport) sort
+        formatting.black, -- // for formatting
+        formatting.isort, -- // for imports. i(mport) sort
 
         -- // C/C++/Java/JavaScript/Json
-        null_ls.builtins.formatting.clang_format,
+        formatting.clang_format,
       },
     })
   end,
