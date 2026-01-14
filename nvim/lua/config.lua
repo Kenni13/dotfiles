@@ -1,22 +1,12 @@
--- set up basics
-vim.cmd("set expandtab")
-vim.cmd("set tabstop=2")
-vim.cmd("set softtabstop=2")
-vim.cmd("set shiftwidth=2")
--- vim.cmd("set relativenumber")
-vim.cmd("set number")
-vim.cmd("set clipboard+=unnamedplus")
 
---vim.opt.wrap = false
+-- // set up the basics
+vim.opt.expandtab = true -- use spaces instead of tabs
+vim.opt.tabstop = 2 -- a tab counts as 2 spaces visually
+vim.opt.softtabstop = 2 -- backspace/delete treats tab as 2 spaces
+vim.opt.shiftwidth = 2 -- indentation width is 2 spaces
+vim.opt.number = true
+vim.opt.clipboard = 'unnamedplus'
 
--- // folding
---vim.o.foldmethod = "expr"
---vim.o.foldexpr = "nvim_treesitter#foldexpr()"
---vim.o.foldlevel = 99
-
--- // set up leader
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
--- // complete options
-vim.opt.completeopt = { "menuone", "noselect", "popup" }

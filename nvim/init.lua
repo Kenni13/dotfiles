@@ -23,10 +23,12 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup lazy.nvim
 require("lazy").setup({
 	spec = { { import = "plugins" } },
-	checker = { enabled = false },
+	checker = {
+    enabled = true,
+    notify = false,
+  },
 })
 
--- // keymaps
 require("keymaps")
 
 vim.cmd.colorscheme("catppuccin-frappe")

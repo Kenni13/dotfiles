@@ -12,5 +12,12 @@ return {
 				height = 30,
 			},
 		})
+
+    -- for de-selecting
+    vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], {
+      silent = true, remap = true
+    })
+    vim.keymap.set("n", "<leader>t", ":ToggleTerm<CR>")
+
 	end,
 }

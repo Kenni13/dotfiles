@@ -38,6 +38,22 @@ return {
           },
         },
       },
+
+      long_message_to_split = true,
+      command_palette = true,
+
+      messages = {
+        filter = function (event)
+          local allowed_types = {
+            "notify",
+            "lsp",
+            "error",
+            "warn",
+          }
+
+          return vim.tbl_contains(allowed_types, event.type);
+        end
+      }
     })
   end,
 }
