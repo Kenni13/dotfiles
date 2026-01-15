@@ -5,7 +5,16 @@ return {
   lazy = false,
   config = function()
     require("nvim-treesitter.configs").setup({
-      ensure_installed = { "c", "cpp", "lua", "python", "java" },
+      ensure_installed = { "c", "cpp", "lua", "python", "rust" },
+      sync_install = false,
+      auto_install = false,
+
+      indent = {
+        enable = true,
+      },
+
+      ignore_install = {},
+
       highlight = {
         enable = true,
         -- disable for files >100KB
@@ -14,12 +23,6 @@ return {
           local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
           return ok and stats and stats.size > max_filesize
         end,
-      },
-      indent = { enable = true },
-      rainbow = {
-        enable = true,
-        extended_mode = true,
-        max_file_lines = 1000,
       },
     })
   end,
