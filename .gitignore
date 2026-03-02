@@ -1,4 +1,11 @@
-ssh/
 history/
 completions/
 cache/
+hyprlock/
+wallpapers/
+.oh-my-zsh/
+
+
+*backup*
+*.png
+/todo.txt

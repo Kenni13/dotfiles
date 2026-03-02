@@ -8,15 +8,5 @@ If:
 CompileFlags:
   Add: [-std=c17, -xc]
 
-# not even sure if this part works lmao
-InlayHints:
-  BlockEnd: false
-  Designators: true
-  Enabled: true
-  ParameterNames: true
-  DeducedTypes: true
-  DefaultArguments: false
-  TypeNameLimit: 24
-
 Index:
   StandardLibrary: No

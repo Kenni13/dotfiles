@@ -1,0 +1,117 @@
+@import "./themes/catppuccin/frappe.css";
+
+* {
+  border: none;
+  border-radius: 0px;
+  font-size: 14px;
+  min-height: 0;
+}
+
+window#waybar {
+  background-color: transparent;
+  font-family: "JetBrainsMono Nerd Font";
+  font-weight: bold;
+  color: @text;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+  background-color: @surface0;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin: 5px 5px 0px 5px;
+}
+
+#workspaces {
+  background-color: @surface0;
+  padding: 0px 10px;
+  margin: 5px 5px 2px 5px;
+}
+
+#workspaces button {
+  color: @subtext1;
+  padding: 0 6px;
+}
+
+#workspaces button.active {
+  color: #FFFFFF;
+}
+
+#workspaces button.urgent {
+  color: @red;
+}
+
+#tray {
+  font-family: "Cantarell 11";
+  font-weight: normal;
+  background-color: @surface0;
+  padding: 0px 10px;
+  margin: 5px 5px 2px 5px;
+}
+
+#window {
+  background-color: @surface0;
+  color: @red;
+  padding: 0px 10px;
+  margin: 5px 5px 2px 5px;
+}
+
+#custom-notification {
+  background-color: @surface0;
+  color: @lavender;
+  padding: 0px 10px;
+  margin: 5px 5px 2px 5px;
+}
+
+#custom-notification button {
+  background-color: transparent;
+}
+
+#custom-notification button:hover {
+  background-color: @lavender;
+  color: @crust;
+}
+
+#backlight {
+  color: @teal;
+}
+
+#pulseaudio {
+  color: @lavender;
+}
+
+#network {
+  color: @text;
+}
+
+#bluetooth {
+  color: @blue;
+}
+
+#battery {
+  color: @mauve;
+}
+
+#battery.charging,
+#battery.plugged {
+  color: @green;
+}
+
+#battery.critical:not(.charging) {
+  color: @red;
+}
+
+#clock {
+  color: @yellow;
+}
+
+#backlight,
+#pulseaudio,
+#network,
+#bluetooth,
+#battery,
+#clock {
+  padding: 0px 10px;
+  margin: 5px 5px 2px 5px;
+}

@@ -11,8 +11,15 @@ tab_size = 2
 max_width = 600
 max_height = 900
 
-# gnome-terminal is kinda cooked.
-# For PDFs specifically
-#[[preview.previewers]]
-#name = "pdf"
-#run = "pdftoppm -f 1 -l 1 -scale-to-x 1920 -scale-to-y -1 -singlefile -jpeg -tiffcompression jpeg -- \"$1\" > \"$2\""
+
+
+# for git
+[[plugin.prepend_fetchers]]
+id  = "git"
+url = "*"
+run = "git"
+
+[[plugin.prepend_fetchers]]
+id  = "git"
+url = "*/"
+run = "git"

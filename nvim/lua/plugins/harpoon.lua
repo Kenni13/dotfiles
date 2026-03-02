@@ -18,22 +18,27 @@ return {
       }
     })
 
+    local opts = {
+      silent = true,
+      noremap = true
+    }
+
     -- add current file to harpoon
     vim.keymap.set("n", "<leader>ha", function()
       harpoon:list():add()
-    end)
+    end, opts)
     -- harpoon quick menu
     vim.keymap.set("n", "<leader>hm", function()
       harpoon.ui:toggle_quick_menu(harpoon:list())
-    end)
+    end, opts)
     -- remove current file from harpoon
     vim.keymap.set("n", "<leader>hd", function()
       harpoon:list():remove()
-    end)
+    end, opts)
     -- empty the harpoon
     vim.keymap.set("n", "<leader>hD", function()
       require("harpoon"):list():clear()
-    end)
+    end, opts)
 
 
     -- vim.api.nvim_create_autocmd("FileType", {
@@ -48,23 +53,23 @@ return {
     -- <leader>1-4 jumps to 1-4 lists respectively
     vim.keymap.set("n", "<leader>1", function()
       harpoon:list():select(1)
-    end)
+    end, opts)
     vim.keymap.set("n", "<leader>2", function()
       harpoon:list():select(2)
-    end)
+    end, opts)
     vim.keymap.set("n", "<leader>3", function()
       harpoon:list():select(3)
-    end)
+    end, opts)
     vim.keymap.set("n", "<leader>4", function()
       harpoon:list():select(4)
-    end)
+    end, opts)
 
     -- Toggle previous & next buffers stored within Harpoon list
     vim.keymap.set("n", "<C-P>", function()
       harpoon:list():prev()
-    end)
+    end, opts)
     vim.keymap.set("n", "<C-N>", function()
       harpoon:list():next()
-    end)
+    end, opts)
   end,
 }

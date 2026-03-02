@@ -1,19 +1,7 @@
 [[plugin.deps]]
-use = "yazi-rs/plugins:mount"
-rev = "d7588f6"
-hash = "e1de3054c0d1a2d8dc6f007eadc0fa31"
+use = "llanosrocas/yaziline"
+rev = "d9cc2cb"
+hash = "b6073aadf2f9a1d5389a6d389f33f69c"
 
-[[plugin.deps]]
-use = "imsi32/yatline"
-rev = "88bd1c5"
-hash = "981acbe9b758b1af3a8154c932bb936d"
-
-[[plugin.deps]]
-use = "wekauwau/yatline-tokyo-night"
-rev = "19dbd25"
-hash = "5f00a80a79b9f7fd8e24d6fa5dbb3ae"
-
-[[flavor.deps]]
-use = "whispcat/tokyo-night-moon"
-rev = "746f562"
-hash = "2cff2c25663791bf61d8b8b4a4b707e6"
+[flavor]
+deps = []
