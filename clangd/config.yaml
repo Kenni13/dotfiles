@@ -1,12 +1,39 @@
-If:
-  PathMatch: .*\.(cpp|cc|hpp)$
 CompileFlags:
-  Add: [-std=c++23, -xc++]
+  Add:
+    - -pedantic
+    - -Wall
+    - -Wextra
+    - -Wshadow
+    - -Wfloat-equal
+    - -Wconversion
+    - -Wsign-conversion
+    - -Wimplicit-fallthrough
+    - -Wstrict-overflow=2
+    - -Wmissing-prototypes
+    - -Wmissing-declarations
+    - -Wredundant-decls
+    - -Wundef
+    - -Wshadow=local
+    - -Wformat=2
+    - -Wstack-protector
+    - -Wstrict-aliasing=2
+    - -Wnull-dereference
+    - -Werror
+
 ---
 If:
-  PathMatch: .*\.(c|h)$
+  PathMatch: .*\.(cpp|cc|hpp|h)$
 CompileFlags:
-  Add: [-std=c17, -xc]
+  Add:
+    - -std=c++23
+    - -xc++
+---
+If:
+  PathMatch: .*\.(c)$
+CompileFlags:
+  Add:
+    - -std=c17
+    - -xc
 
 Index:
   StandardLibrary: No
