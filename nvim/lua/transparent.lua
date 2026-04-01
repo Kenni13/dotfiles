@@ -1,4 +1,4 @@
--- Make Neovim fully transparent
+-- // Make Neovim fully transparent
 local transparent_groups = {
   "Normal",
   "NormalNC",
@@ -10,7 +10,7 @@ local transparent_groups = {
   "CursorLineNr",
   "Folded",
   "Pmenu",
-  "PmenuSel",
+  -- "PmenuSel",
   "TabLine",
   "TabLineSel",
   "TabLineFill",

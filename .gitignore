@@ -8,4 +8,6 @@ wallpapers/
 
 *backup*
 *.png
+.zsh_history
+/nvim/lazy-lock.json
 /todo.txt

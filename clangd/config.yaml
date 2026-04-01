@@ -1,21 +1,17 @@
 CompileFlags:
   Add:
-    - -pedantic
+    - -Wpedantic
     - -Wall
     - -Wextra
-    - -Wshadow
     - -Wfloat-equal
     - -Wconversion
-    - -Wsign-conversion
+    # - -Wsign-conversion
     - -Wimplicit-fallthrough
-    - -Wstrict-overflow=2
-    - -Wmissing-prototypes
     - -Wmissing-declarations
     - -Wredundant-decls
     - -Wundef
     - -Wshadow=local
     - -Wformat=2
-    - -Wstack-protector
     - -Wstrict-aliasing=2
     - -Wnull-dereference
     - -Werror

@@ -6,8 +6,6 @@ return {
 		"nvim-telescope/telescope-file-browser.nvim",
 	},
 	config = function()
-    local startup = require'startup'
-
-		startup.setup()
+		require('startup').setup()
 	end,
 }

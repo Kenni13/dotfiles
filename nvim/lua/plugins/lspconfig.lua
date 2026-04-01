@@ -1,13 +1,13 @@
-
 local LSPs = {
-  "lua_ls",
-  "clangd",
-  "pyright",
+	"lua_ls",
+	"clangd",
+	"pyright",
+  "rust_analyzer"
 }
 
 return {
-  {
-    "mason-org/mason-lspconfig.nvim",
+	{
+		"mason-org/mason-lspconfig.nvim",
 		dependencies = {
 			{ "mason-org/mason.nvim", opts = {} },
 			"neovim/nvim-lspconfig",
@@ -20,7 +20,7 @@ return {
 				ensure_installed = LSPs,
 			})
 		end,
-  },
+	},
 	{
 		-- lspconfig with capabilities and on_attach
 		"neovim/nvim-lspconfig",
@@ -42,55 +42,63 @@ return {
 				vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 				vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 
-        vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)          -- list references
-        vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, opts)
+				vim.keymap.set("n", "gr", vim.lsp.buf.references, opts) -- list references
+				vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, opts)
 
-        -- previous diagnostic
-        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+				-- previous diagnostic
+				vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+				vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 			end
 
 			vim.diagnostic.config({
 				virtual_text = { prefix = "■" },
-        signs = true,
-        underline = true,
-        update_in_insert = false,
-        severity_sort = true,
-      })
+				signs = true,
+				underline = true,
+				update_in_insert = false,
+				severity_sort = true,
+			})
 
-      for _, srv in ipairs(LSPs) do
-        local ok, _ = pcall(function()
-          local config = {
-            capabilities = capabilities,
-            on_attach = on_attach,
-          }
+			for _, srv in ipairs(LSPs) do
+				local ok, _ = pcall(function()
+					local config = {
+						capabilities = capabilities,
+						on_attach = on_attach,
+					}
 
-          if srv == "clangd" then
-            config.cmd = {
-              "clangd",
-              "--header-insertion=never", -- you already have this
-              "--completion-style=detailed", -- shows function signatures
-              "--limit-results=100", -- optional
-              "--all-scopes-completion=false", -- disable completions outside project
-            }
-          elseif srv == "lua_ls" then
+					if srv == "clangd" then
+						config.cmd = {
+							"clangd",
+							"--header-insertion=never", -- you already have this
+							"--completion-style=detailed", -- shows function signatures
+							"--limit-results=100", -- optional
+							"--all-scopes-completion=false", -- disable completions outside project
+						}
+					elseif srv == "lua_ls" then
+						config.settings = {
+							Lua = {
+								diagnostics = { globals = { "vim" } },
+								workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+							},
+						}
+          elseif srv == "rust_analyzer" then
+            vim.g.rust_recommended_style = 0
             config.settings = {
-              Lua = {
-                diagnostics = { globals = { "vim" } },
-                workspace = { library = vim.api.nvim_get_runtime_file("", true) },
-              },
+              ['rust-analyzer'] = {
+                rustfmt = {
+                  extraArgs = { '--config', 'tab_spaces=2' }
+                }
+              }
             }
-          end
+					end
 
-          vim.lsp.config(srv, config)
-        end)
+					vim.lsp.config(srv, config)
+				end)
 
-        if not ok then
-          vim.notify("lspconfig: failed to setup " .. srv .. " reason: " .. _, vim.log.levels.ERROR)
-        end
-      end
-    end,
-  },
+				if not ok then
+					vim.notify("lspconfig: failed to setup " .. srv .. " reason: " .. _, vim.log.levels.ERROR)
+				end
+			end
+		end,
+	},
 }
-
 
