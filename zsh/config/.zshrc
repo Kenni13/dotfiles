@@ -19,7 +19,7 @@ setopt rm_star_silent
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
-
+eval "$(fzf --zsh)"
 
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 export STARSHIP_CACHE=~/.config/starship/cache
@@ -42,6 +42,8 @@ alias paste='wl-paste'
 alias tree='ls --tree'
 alias ls='eza --color=always --icons=always --group-directories-first --sort=extension'
 alias cd='z'
+alias c='clang -Wall -Wextra -Wpedantic'
+alias cc='clang++ -Wall -Wextra -Wpedantic'
 
 
 function zfzf() {

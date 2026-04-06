@@ -1,14 +1,50 @@
+CompileFlags:
+  Add:
+    - -Wpedantic
+    - -Wall
+    - -Wextra
+    - -Wshadow
+    - -Wfloat-equal
+    - -Wstrict-overflow=2
+    - -Wmissing-prototypes
+    - -Wmissing-declarations
+    - -Wredundant-decls
+    - -Wundef
+    - -Wshadow=local
+    - -Wformat=2
+    - -Wstack-protector
+    - -Wstrict-aliasing=2
+    - -Wnull-dereference
+    - -Wabstract-vbase-init
+    - -Wweak-vtables
+    - -Wnon-virtual-dtor
+    - -Woverloaded-virtual
+    - -Wno-empty-translation-unit
+    - -Werror
+
+---
+
 If:
   PathMatch: .*\.(cpp|cc|hpp)$
 CompileFlags:
-  Add: [-std=c++23, -xc++]
+  Add:
+    - -std=c++23
+    - -xc++
+
 ---
+
 If:
   PathMatch: .*\.(c|h)$
 CompileFlags:
-  Add: [-std=c17, -xc]
+  Add:
+    - -std=c17
+    - -xc
 
-# not even sure if this part works lmao
+
+
+
+
+
 InlayHints:
   BlockEnd: false
   Designators: true
