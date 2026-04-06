@@ -31,4 +31,4 @@ require("lazy").setup({
 
 require("keymaps")
 
-vim.cmd.colorscheme("catppuccin-frappe")
+vim.cmd.colorscheme("gruvbox")

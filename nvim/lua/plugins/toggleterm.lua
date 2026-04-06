@@ -13,11 +13,14 @@ return {
 			},
 		})
 
-    -- for de-selecting
-    vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], {
+    local opts = {
       silent = true, remap = true
-    })
-    vim.keymap.set("n", "<leader>t", ":ToggleTerm<CR>")
+    }
+
+    -- for de-selecting
+    vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], opts);
+
+    vim.keymap.set("n", "<leader>t", ":ToggleTerm<CR>", opts);
 
 	end,
 }
