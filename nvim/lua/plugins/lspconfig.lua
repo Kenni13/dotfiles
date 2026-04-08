@@ -68,7 +68,7 @@ return {
 					if srv == "clangd" then
 						config.cmd = {
 							"clangd",
-							"--header-insertion=never", -- you already have this
+							"--header-insertion=never", -- no header
 							"--completion-style=detailed", -- shows function signatures
 							"--limit-results=100", -- optional
 							"--all-scopes-completion=false", -- disable completions outside project
@@ -81,14 +81,14 @@ return {
 							},
 						}
           elseif srv == "rust_analyzer" then
-            vim.g.rust_recommended_style = 0
-            config.settings = {
-              ['rust-analyzer'] = {
-                rustfmt = {
-                  extraArgs = { '--config', 'tab_spaces=2' }
-                }
-              }
-            }
+            -- vim.g.rust_recommended_style = 0
+            -- config.settings = {
+            --   ['rust-analyzer'] = {
+            --     rustfmt = {
+            --       extraArgs = { '--config', 'tab_spaces=2' }
+            --     }
+            --   }
+            -- }
 					end
 
 					vim.lsp.config(srv, config)

@@ -11,6 +11,8 @@ return {
 
       indent = {
         enable = true,
+        -- indentation for C/CPP genuinely stinks
+        disable = { "c", "cpp" },
       },
 
       ignore_install = {},
