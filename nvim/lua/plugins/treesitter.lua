@@ -10,7 +10,7 @@ return {
       auto_install = false,
 
       indent = {
-        enable = true,
+        enable = false,
       },
 
       ignore_install = {},

@@ -30,6 +30,4 @@ require("lazy").setup({
 })
 
 require("keymaps")
-require("transparent")
-
-vim.cmd.colorscheme("catppuccin-frappe")
+-- require("transparent")

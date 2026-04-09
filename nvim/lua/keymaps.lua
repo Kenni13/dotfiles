@@ -27,5 +27,7 @@ vim.keymap.set("n", "<leader>-", ":split<CR>", opts)
 vim.keymap.set("n", "<leader>/", ":vsplit<CR>", opts)
 vim.keymap.set("n", "<leader>x", ":close<CR>", opts)
 
+-- // new files
+vim.keymap.set("n", "<leader>nf", "<cmd>enew<cr>", { desc = "New File" })
 
 

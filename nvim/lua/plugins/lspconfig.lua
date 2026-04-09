@@ -32,8 +32,6 @@ return {
 			local _ = require("lspconfig")
 
 			local on_attach = function(_, bufnr)
-				-- inlay_hints.on_attach(client, bufnr)
-
 				local opts = { buffer = bufnr, silent = true }
 				-- // these keymaps will say here (because of obvious reasons)
 				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
@@ -81,14 +79,14 @@ return {
 							},
 						}
           elseif srv == "rust_analyzer" then
-            vim.g.rust_recommended_style = 0
-            config.settings = {
+            -- vim.g.rust_recommended_style = 0
+            --[[config.settings = {
               ['rust-analyzer'] = {
                 rustfmt = {
                   extraArgs = { '--config', 'tab_spaces=2' }
                 }
               }
-            }
+            }]]
 					end
 
 					vim.lsp.config(srv, config)

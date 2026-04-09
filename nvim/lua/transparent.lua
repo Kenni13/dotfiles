@@ -10,7 +10,6 @@ local transparent_groups = {
   "CursorLineNr",
   "Folded",
   "Pmenu",
-  -- "PmenuSel",
   "TabLine",
   "TabLineSel",
   "TabLineFill",
@@ -19,8 +18,10 @@ local transparent_groups = {
 vim.api.nvim_create_autocmd("ColorScheme", {
   pattern = "*",
   callback = function()
-    for _, group in ipairs(transparent_groups) do
-      vim.api.nvim_set_hl(0, group, { bg = "none" })
-    end
+    vim.defer_fn(function()
+      for _, group in ipairs(transparent_groups) do
+        vim.api.nvim_set_hl(0, group, { bg = "none" })
+      end
+    end, 50)
   end,
 })
