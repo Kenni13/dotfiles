@@ -68,6 +68,7 @@ return {
 					if srv == "clangd" then
 						config.cmd = {
 							"clangd",
+              "--clang-tidy",
 							"--header-insertion=never", -- no header
 							"--completion-style=detailed", -- shows function signatures
 							"--limit-results=100", -- optional
