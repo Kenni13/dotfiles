@@ -4,6 +4,7 @@ BasedOnStyle: LLVM
 AllowShortFunctionsOnASingleLine: None
 AllowShortBlocksOnASingleLine: false
 AllowShortIfStatementsOnASingleLine: false
+AllowShortEnumsOnASingleLine: false
 
 # Control brace style
 BreakBeforeBraces: Attach
@@ -13,7 +14,10 @@ SpaceBeforeCpp11BracedList: true
 SpacesInContainerLiterals: true
 
 # Pointer/reference alignment (optional)
-PointerAlignment: Left
+PointerAlignment: Right
+
+# template & class decl on new line
+AlwaysBreakTemplateDeclarations: Yes
 
 # Indentation
 IndentWidth: 2

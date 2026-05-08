@@ -30,6 +30,5 @@ require("lazy").setup({
 })
 
 require("keymaps")
-require("sk")
 
 vim.cmd.colorscheme("gruvbox")
