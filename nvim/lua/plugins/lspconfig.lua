@@ -2,7 +2,7 @@ local LSPs = {
 	"lua_ls",
 	"clangd",
 	"pyright",
-  "rust_analyzer"
+	-- "rust_analyzer"
 }
 
 return {
@@ -18,6 +18,7 @@ return {
 			require("mason").setup()
 			require("mason-lspconfig").setup({
 				ensure_installed = LSPs,
+				automatic_enable = false,
 			})
 		end,
 	},
@@ -25,28 +26,9 @@ return {
 		-- lspconfig with capabilities and on_attach
 		"neovim/nvim-lspconfig",
 		config = function()
-			-- local inlay_hints = require("inlay-hints")
 			local has_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 			local capabilities = has_cmp_nvim_lsp and cmp_nvim_lsp.default_capabilities()
 				or vim.lsp.protocol.make_client_capabilities()
-			local _ = require("lspconfig")
-
-			local on_attach = function(_, bufnr)
-				local opts = { buffer = bufnr, silent = true }
-				-- // these keymaps will say here (because of obvious reasons)
-				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-				vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-				vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-				vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-
-				vim.keymap.set("n", "gr", vim.lsp.buf.references, opts) -- list references
-				vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, opts)
-
-				-- previous diagnostic
-				vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-				vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-			end
 
 			vim.diagnostic.config({
 				virtual_text = { prefix = "■" },
@@ -60,16 +42,14 @@ return {
 				local ok, _ = pcall(function()
 					local config = {
 						capabilities = capabilities,
-						on_attach = on_attach,
 					}
 
 					if srv == "clangd" then
 						config.cmd = {
 							"clangd",
-							"--header-insertion=never", -- you already have this
-							"--completion-style=detailed", -- shows function signatures
-							"--limit-results=100", -- optional
-							"--all-scopes-completion=false", -- disable completions outside project
+							--"--header-insertion=never",
+							"--completion-style=detailed",
+							"--all-scopes-completion=false",
 						}
 					elseif srv == "lua_ls" then
 						config.settings = {
@@ -78,25 +58,18 @@ return {
 								workspace = { library = vim.api.nvim_get_runtime_file("", true) },
 							},
 						}
-          elseif srv == "rust_analyzer" then
-            -- vim.g.rust_recommended_style = 0
-            --[[config.settings = {
-              ['rust-analyzer'] = {
-                rustfmt = {
-                  extraArgs = { '--config', 'tab_spaces=2' }
-                }
-              }
-            }]]
 					end
 
 					vim.lsp.config(srv, config)
+					-- vim.lsp.enable(srv)
 				end)
 
 				if not ok then
 					vim.notify("lspconfig: failed to setup " .. srv .. " reason: " .. _, vim.log.levels.ERROR)
 				end
 			end
+
+      vim.lsp.enable(LSPs)
 		end,
 	},
 }
-

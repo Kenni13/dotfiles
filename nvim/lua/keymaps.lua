@@ -17,17 +17,34 @@ vim.keymap.set("x", "p", '"_dP', opts)
 
 
 -- Resize splits with Ctrl+Shift+Arrow
-vim.keymap.set("n", "<C-S-Down>", ":resize +2<CR>", opts)
-vim.keymap.set("n", "<C-S-Up>", ":resize -2<CR>", opts)
-vim.keymap.set("n", "<C-S-Left>", ":vertical resize -2<CR>", opts)
-vim.keymap.set("n", "<C-S-Right>", ":vertical resize +2<CR>", opts)
+vim.keymap.set("n", "<M-Down>", ":resize +2<CR>", opts)
+vim.keymap.set("n", "<M-Up>", ":resize -2<CR>", opts)
+vim.keymap.set("n", "<M-Left>", ":vertical resize -2<CR>", opts)
+vim.keymap.set("n", "<M-Right>", ":vertical resize +2<CR>", opts)
 
 -- // splits
 vim.keymap.set("n", "<leader>-", ":split<CR>", opts)
 vim.keymap.set("n", "<leader>/", ":vsplit<CR>", opts)
 vim.keymap.set("n", "<leader>x", ":close<CR>", opts)
 
--- // new files
-vim.keymap.set("n", "<leader>nf", "<cmd>enew<cr>", { desc = "New File" })
+-- deleting buffers
+vim.keymap.set("n", "<leader>bd", ":bd<CR>", opts);
 
+vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+    callback = function(_)
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+        vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+        vim.keymap.set("n", "<leader>gf", function()
+            vim.lsp.buf.format { async = true }
+        end, opts)
 
+        -- Diagnostics (These are actually global, but common to set here)
+        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+    end,
+})

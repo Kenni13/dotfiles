@@ -3,17 +3,23 @@ CompileFlags:
     - -Wpedantic
     - -Wall
     - -Wextra
+    - -Wshadow
     - -Wfloat-equal
-    - -Wconversion
-    # - -Wsign-conversion
-    - -Wimplicit-fallthrough
+    - -Wstrict-overflow=2
+    - -Wmissing-prototypes
     - -Wmissing-declarations
     - -Wredundant-decls
     - -Wundef
     - -Wshadow=local
     - -Wformat=2
+    - -Wstack-protector
     - -Wstrict-aliasing=2
     - -Wnull-dereference
+    - -Wabstract-vbase-init
+    - -Wweak-vtables
+    - -Wnon-virtual-dtor
+    - -Woverloaded-virtual
+    - -Wno-empty-translation-unit
     - -Werror
 
 ---

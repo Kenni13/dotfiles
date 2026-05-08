@@ -46,3 +46,5 @@ function y() {
 	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
+
+export PATH="$HOME/.local/bin:$PATH"

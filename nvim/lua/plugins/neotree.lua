@@ -12,6 +12,16 @@ return {
 			window = {
 				width = 30,
         position = "right",
+
+        mappings = {
+          ['a'] = {
+            "add",
+
+            config = {
+              show_path = "relative"
+            }
+          }
+        }
 				-- position = "right",
 			},
 			filesystem = {
