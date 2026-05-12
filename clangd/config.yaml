@@ -1,3 +1,10 @@
+Completion:
+  HeaderInsertion: Never
+  AllScopes: False
+
+Index:
+  StandardLibrary: No
+
 CompileFlags:
   Add:
     - -Wpedantic
@@ -6,7 +13,6 @@ CompileFlags:
     - -Wshadow
     - -Wfloat-equal
     - -Wstrict-overflow=2
-    - -Wmissing-prototypes
     - -Wmissing-declarations
     - -Wredundant-decls
     - -Wundef
@@ -16,7 +22,6 @@ CompileFlags:
     - -Wstrict-aliasing=2
     - -Wnull-dereference
     - -Wabstract-vbase-init
-    - -Wweak-vtables
     - -Wnon-virtual-dtor
     - -Woverloaded-virtual
     - -Wno-empty-translation-unit
@@ -30,6 +35,7 @@ CompileFlags:
   Add:
     - -std=c++23
     - -xc++
+    - -Wweak-vtables
 
 ---
 
@@ -39,20 +45,13 @@ CompileFlags:
   Add:
     - -std=c17
     - -xc
+    - -Wmissing-prototypes
 
-
-
-
-
-
-InlayHints:
-  BlockEnd: false
-  Designators: true
-  Enabled: true
-  ParameterNames: true
-  DeducedTypes: true
-  DefaultArguments: false
-  TypeNameLimit: 24
-
-Index:
-  StandardLibrary: No
+# InlayHints:
+#   BlockEnd: false
+#   Designators: true
+#   Enabled: true
+#   ParameterNames: true
+#   DeducedTypes: true
+#   DefaultArguments: false
+#   TypeNameLimit: 24
