@@ -4,18 +4,12 @@ home = Path.home()
 curr = Path.cwd()
 
 # files going into ~/.config
-config = [
+config: list[str] = [
     'clangd',
     'eza',
     'fastfetch',
-    'hypr',
-    'kitty',
     'nvim',
     'starship',
-    'waybar',
-    'swaync',
-    'wofi',
-    'yazi',
 ]
 
 # custom ones
@@ -27,17 +21,17 @@ configDir = home / '.config'
 configDir.mkdir(exist_ok=True)
 
 # _from -> _to
-def symlink(_from: Path, _to: Path):
-    if not _from.exists():
-        print(f"WARNING: {_from} doesn't exist")
+def symlink(src: Path, dst: Path):
+    if not src.exists():
+        print(f"WARNING: {src} doesn't exist")
         return
 
-    if _to.exists():
-        print(f"WARNING: {_to} already exists", "(already a symlink)" if _to.is_symlink() else "")
+    if dst.exists():
+        print(f"WARNING: {dst} already exists", "(already a symlink)" if dst.is_symlink() else "")
         return
 
-    _to.symlink_to(_from, _from.is_dir())
-    print(f'{_from} -> {_to}')
+    dst.symlink_to(src, src.is_dir())
+    print(f'{src} -> {dst}')
 
 for config_dir in config:
     curr_dir = curr / config_dir
