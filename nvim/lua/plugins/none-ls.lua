@@ -1,4 +1,3 @@
--- // Its actually none-ls (null-ls is deprecated)
 return {
 	--// set up formatters (none-ls)
 	"jay-babu/mason-null-ls.nvim",
@@ -6,6 +5,7 @@ return {
 		"nvimtools/none-ls.nvim",
 		"mason-org/mason-lspconfig.nvim",
 		"nvimtools/none-ls.nvim",
+		"nvim-lua/plenary.nvim",
 	},
 	config = function()
 		local mason_null_ls = require("mason-null-ls")

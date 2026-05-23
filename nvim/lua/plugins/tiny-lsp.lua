@@ -5,19 +5,19 @@ return {
 
 	config = function()
 		require("tiny-inline-diagnostic").setup({
-      options = {
-        add_messages = {
-          display_count = true,
-        },
-        multilines = {
-          enabled = true,
-          always_show = true,
-        },
-        show_source = {
-          enabled = true,
-        },
-      }
+			options = {
+				add_messages = {
+					display_count = true,
+				},
+				multilines = {
+					enabled = true,
+					always_show = true,
+				},
+				show_source = {
+					enabled = true,
+				},
+			},
 		})
-		vim.diagnostic.config({ virtual_text = false }) -- Disable Neovim's default virtual text diagnostics
+		vim.diagnostic.config({ virtual_text = false })
 	end,
 }

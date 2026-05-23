@@ -1,74 +1,65 @@
-local LSPs = {
-	"lua_ls",
-	"clangd",
-	"pyright",
+local ensure_installed = {
+  "lua_ls",
+  "clangd",
+  "pyright",
+
+  -- rust_analyzer is handled by rustacianvim
 }
 
 return {
-	{
-		"mason-org/mason-lspconfig.nvim",
-		dependencies = {
-			{ "mason-org/mason.nvim", opts = {} },
-			"neovim/nvim-lspconfig",
-		},
-		lazy = false,
-		-- // mason installs the LSP servers
-		config = function()
-			require("mason").setup()
-			require("mason-lspconfig").setup({
-				ensure_installed = LSPs,
-        automatic_enable = false,
-			})
-		end,
-	},
-	{
-		-- lspconfig with capabilities and on_attach
-		"neovim/nvim-lspconfig",
-		config = function()
-			local has_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-			local capabilities = has_cmp_nvim_lsp and cmp_nvim_lsp.default_capabilities()
-				or vim.lsp.protocol.make_client_capabilities()
+  {
+    "mason-org/mason-lspconfig.nvim",
+    dependencies ={
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
+    },
+    lazy = false,
 
-			vim.diagnostic.config({
-				virtual_text = { prefix = "■" },
-				signs = true,
-				underline = true,
-				update_in_insert = false,
-				severity_sort = true,
-			})
+    config = function()
+      require("mason").setup()
+      require("mason-lspconfig").setup({
+        ensure_installed = ensure_installed,
+        automatic_enable = false, -- to stop rust-analyzer from being enabled
+      })
+    end
+  },
 
-			for _, srv in ipairs(LSPs) do
-				local ok, _ = pcall(function()
-					local config = {
-						capabilities = capabilities,
-					}
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      local capabilities = vim.lsp.protocol.make_client_capabilities();
+      capabilities = vim.tbl_deep_extend("force", capabilities, require("mini.completion").get_lsp_capabilities())
 
-					if srv == "clangd" then
-						config.cmd = {
-							"clangd",
-              "--clang-tidy",
-							"--header-insertion=never", -- no header
-							"--completion-style=detailed", -- shows function signatures
-							"--limit-results=100", -- optional
-							"--all-scopes-completion=false", -- disable completions outside project
-						}
-					elseif srv == "lua_ls" then
-						config.settings = {
-							Lua = {
-								diagnostics = { globals = { "vim" } },
-								workspace = { library = vim.api.nvim_get_runtime_file("", true) },
-							},
-						}
-					end
+      for _, srv in ipairs(ensure_installed) do
+        local ok, _ = pcall(function()
+          local config = {
+            capabilities = capabilities,
+          }
 
-					vim.lsp.config(srv, config)
-          vim.lsp.enable(srv)
-				end)
+          if srv == "clangd" then
+            config.cmd = {
+              "clangd",
+              --"--header-insertion=never",
+              "--completion-style=detailed",
+              "--all-scopes-completion=false",
+            }
+          elseif srv == "lua_ls" then
+            config.settings = {
+              Lua = {
+                diagnostics = { globals = { "vim" } },
+                workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+              },
+            }
+          end
 
-				if not ok then
-					vim.notify("lspconfig: failed to setup " .. srv .. " reason: " .. _, vim.log.levels.ERROR)
-				end
-			end
-		end,
-	},
+          vim.lsp.config(srv, config)
+        end)
+        if not ok then
+          vim.notify("lspconfig: failed to setup " .. srv .. " reason: " .. _, vim.log.levels.ERROR)
+        end;
+      end;
+
+      vim.lsp.enable(ensure_installed);
+    end,
+  }
 }

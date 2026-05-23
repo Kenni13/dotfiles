@@ -1,31 +1,38 @@
+local langs = {
+  "c", "cpp", "lua", "python", "rust"
+}
+
 return {
   "nvim-treesitter/nvim-treesitter",
-  branch = "master",  -- legacy branch
+  branch = "main",
   build = ":TSUpdate",
   lazy = false,
   config = function()
-    require("nvim-treesitter.configs").setup({
-      ensure_installed = { "c", "cpp", "lua", "python", "rust" },
-      sync_install = false,
-      auto_install = false,
+    local treesitter = require("nvim-treesitter")
+    treesitter.install(langs);
 
-      indent = {
-        enable = true,
-        -- indentation for C/CPP genuinely stinks
-        disable = { "c", "cpp" },
-      },
 
-      ignore_install = {},
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "*",
+      callback = function(args)
+        local buf = args.buf;
+        local ft = vim.bo[buf].filetype;
 
-      highlight = {
-        enable = true,
-        -- disable for files >100KB
-        disable = function(_, buf)
-          local max_filesize = 100 * 1024
-          local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-          return ok and stats and stats.size > max_filesize
-        end,
-      },
+        local lang = vim.treesitter.language.get_lang(ft)
+        if not lang then
+          return
+        end;
+
+        local ok_add = pcall(vim.treesitter.language.add, lang);
+        if not ok_add then
+          return
+        end;
+
+        pcall(vim.treesitter.start, buf, lang);
+      end,
     })
   end,
 }
+
+
+

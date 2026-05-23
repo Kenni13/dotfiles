@@ -1,27 +1,42 @@
--- // set up the basics
-vim.cmd("set expandtab")
-vim.cmd("set tabstop=2")
-vim.cmd("set softtabstop=2")
-vim.cmd("set shiftwidth=2")
-vim.cmd("set number")
-vim.cmd("set clipboard+=unnamedplus")
+-- disable file explorer
+vim.g.netrw_banner = 0
 
-vim.cmd([[set cindent]])
-vim.cmd([[set cinoptions=:0,p0,t0]])
+vim.opt.nu = true
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+vim.opt.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.clipboard:append("unnamedplus")
 
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = "rust",
---   callback = function()
---     vim.opt_local.shiftwidth = 4
---     vim.opt_local.softtabstop = 4
---   end,
--- })
+vim.opt.wrap = false
+vim.opt.smartindent = true
+vim.opt.inccommand = "split"
 
--- vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
---   callback = function()
---     vim.lsp.codelens.refresh()
---   end,
--- })
+vim.opt.completeopt = "menuone,noselect,fuzzy,nosort"
+vim.opt.shortmess:append("c")
+
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.laststatus = 3 -- one global status line
+
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"
+vim.opt.undofile = true
+vim.opt.scrolloff = 8
+
+vim.opt.signcolumn = "yes"
+vim.o.cmdheight = 0
+
+
+vim.api.nvim_create_autocmd("UIEnter", {
+  callback = function()
+    vim.schedule(function()
+      vim.o.cmdheight = 0
+    end)
+  end
+})
