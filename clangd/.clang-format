@@ -1,0 +1,29 @@
+BasedOnStyle: LLVM
+
+# Keep statements on separate lines
+AllowShortFunctionsOnASingleLine: None
+AllowShortBlocksOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: false
+AllowShortEnumsOnASingleLine: false
+
+# Control brace style
+BreakBeforeBraces: Attach
+
+# Spaces inside braces
+SpaceBeforeCpp11BracedList: true
+SpacesInContainerLiterals: true
+
+# Pointer/reference alignment (optional)
+PointerAlignment: Right
+
+# template & class decl on new line
+AlwaysBreakTemplateDeclarations: Yes
+
+# Indentation
+IndentWidth: 2
+
+# Keep access modifiers clean
+AccessModifierOffset: -2
+
+# Prevent aggressive compaction
+ColumnLimit: 100

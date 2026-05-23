@@ -1,0 +1,96 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "source": "$DOTDIR/fastfetch/ascii/arch.txt",
+    "color": {
+        "1": "37",
+        "2": "37",
+        "3": "37",
+        "4": "37",
+        "5": "37",
+        "6": "37"
+    },      
+    "padding": {
+      "top": 1,
+      "right": 6
+    }
+  },
+  "display": {
+    "separator": " "
+  },
+  "modules": [
+    {
+      "key": "\n",
+      "type": "custom"
+    },
+    {
+      "key": "{#37}╭───────────╮",
+      "type": "custom"
+    },
+    {
+      "key": "{#37}│  user    │",
+      "type": "title",
+      "format": "{1}"
+    },
+    // {
+    //   "key": "{#37}│ 󰇅 host    │",
+    //   "type": "title",
+    //   "format": "{2}"
+    // },
+    {
+      "key": "{#37}│ 󰟾 distro  │",
+      "type": "os",
+      "format": "{3}"
+    },
+    {
+      "key": "{#37}│  kernel  │",
+      "type": "kernel",
+      "format": "{1} {2}"
+    },
+    {
+      "key": "{#37}│ 󰅐 uptime  │",
+      "type": "uptime",
+      "format": "{2} Hrs {3} Mins"
+    },
+    {
+      "key": "{#37}│ 󰇄 desktop │",
+      "type": "de"
+    },
+    {
+      "key": "{#37}│  term    │",
+      "type": "terminal",
+      "format": "{5}"
+    },
+    {
+      "key": "{#37}│  shell   │",
+      "type": "shell",
+      "format": "{6}"
+    },
+    {
+      "key": "{#37}│ 󰉉 disk    │",
+      "type": "disk",
+      "folders": "/",
+      "format": "{1} / {2}",
+      "percent-type": 1
+    },
+    {
+      "key": "{#37}│  memory  │",
+      "type": "memory",
+      "format": "{1} / {2}"
+    },
+    // { // doesn't make sense to have a color palette with pure monochrome
+    //   "key": "{#37}├───────────┤",
+    //   "type": "custom"
+    // },
+    // {
+    //   "key": "{#37}│  colors  │ 󰮯 ",
+    //   "type": "colors",
+    //   "symbol": "circle"
+    // },
+    {
+      "key": "{#37}╰───────────╯",
+      "type": "custom"
+    }
+  ]
+}
+

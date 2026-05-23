@@ -1,0 +1,49 @@
+# ~/.config/eza/theme.yml
+
+filekinds:
+  directory:
+    foreground: "#bbbbbb"
+  symlink:
+    foreground: "#aaaaaa"
+  socket:
+    foreground: "#888888"
+  executable:
+    foreground: "#dddddd"
+  normal:
+    foreground: "#cccccc"
+  special:
+    foreground: "#999999"
+
+perms:
+  user_read:
+    foreground: "#cccccc"
+  user_write:
+    foreground: "#bbbbbb"
+  user_execute:
+    foreground: "#dddddd"
+  # etc for other perms...
+
+size:
+  number_byte:
+    foreground: "#cccccc"
+  unit_kilo:
+    foreground: "#cccccc"
+  # etc
+
+users:
+  user_you:
+    foreground: "#cccccc"
+  user_other:
+    foreground: "#bbbbbb"
+  group_you:
+    foreground: "#cccccc"
+  # etc
+
+git:
+  new:
+    foreground: "#cccccc"
+  modified:
+    foreground: "#bbbbbb"
+  deleted:
+    foreground: "#999999"
+  # etc
