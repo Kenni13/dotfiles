@@ -2,8 +2,7 @@ local ensure_installed = {
   "lua_ls",
   "clangd",
   "pyright",
-
-  -- rust_analyzer is handled by rustacianvim
+  "vtsls",
 }
 
 return {
